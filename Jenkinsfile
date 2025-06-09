@@ -16,7 +16,7 @@ pipeline {
     }
     stage('deploy index.html to container httpd-3') {
       steps {
-        dir('/mnt/project') {
+        dir('/mnt/project2') {
           sh 'docker cp index.html httpd-3:/usr/local/apache2/htdocs'
         }
       }
