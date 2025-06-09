@@ -29,7 +29,7 @@ pipeline {
     }
     stage('login to httpd container httpd-1') {
       steps {
-        sh 'docker exec httpd-1 bash -c "chmod 777 /usr/local/apache2/htdocs/index.html'
+        sh 'docker exec httpd-1 bash -c "chmod 777 /usr/local/apache2/htdocs/index.html"'
       }
     }
   }
