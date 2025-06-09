@@ -21,5 +21,12 @@ pipeline {
         }
       }
     }
+    stage('login to httpd container httpd-1') {
+      steps {
+        sh 'docker exec -it httpd-1 bash'
+        sh 'cd /usr/local/apache2/htdocs'
+        sh 'chmod -R 777 index.html'
+      }
+    }
   }
 }
