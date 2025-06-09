@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('clonin git repo to custom location') {
       steps {
-        dir('/mnt/project') {
+        dir('/mnt/project1') {
           sh 'rm -rf *'
           checkout scm
         }
