@@ -12,7 +12,7 @@ pipeline {
     stage('deleting old containers') {
       steps {
         sh 'docker kill \$(docker ps -q) || true'
-        sh' docker system prune -a -f'
+        sh 'docker system prune -a -f'
       }
     }
     stage('creating httpd container') {
@@ -29,9 +29,7 @@ pipeline {
     }
     stage('login to httpd container httpd-1') {
       steps {
-        sh 'docker exec -i httpd-1 bash'
-        sh 'cd /usr/local/apache2/htdocs'
-        sh 'chmod -R 777 index.html'
+        sh 'docker exec httpd-1 bash -c "chmod 777 /usr/local/apache2/htdocs/index.html'
       }
     }
   }
