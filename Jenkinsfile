@@ -9,12 +9,6 @@ pipeline {
         }
       }
     }
-    stage('deleting old containers') {
-      steps {
-        sh 'docker kill \$(docker ps -q) || true'
-        sh 'docker system prune -a -f'
-      }
-    }
     stage('creating httpd container') {
       steps {
         sh 'docker run -dp 90:80 --name httpd-2 httpd'
@@ -23,7 +17,7 @@ pipeline {
     stage('deploy index.html to container httpd-2') {
       steps {
         dir('/mnt/project') {
-          sh 'docker cp index.html httpd-1:/usr/local/apache2/htdocs'
+          sh 'docker cp index.html httpd-2:/usr/local/apache2/htdocs'
         }
       }
     }
