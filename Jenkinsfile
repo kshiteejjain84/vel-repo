@@ -9,12 +9,6 @@ pipeline {
         }
       }
     }
-    stage('deleting old containers') {
-      steps {
-        sh 'docker kill \$(docker ps -q) || true'
-        sh 'docker system prune -a -f'
-      }
-    }
     stage('creating httpd container') {
       steps {
         sh 'docker run -dp 80:80 --name httpd-1 httpd'
